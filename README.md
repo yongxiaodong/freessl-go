@@ -5,7 +5,11 @@
 - 阿里云DNS
 - 腾讯云DNSPOD
 
-## 配置文件
+## 案例
+1、自动申请test.com和itgod.org的SSL通配符证书，保存在./cert_storage目录中，证书到期前10天重新申请证书覆盖即将过期证书
+2、test.com证书更新后，需要调用/opt/update.sh这个外部脚本执行一些外部的自定义逻辑，比如替换nginx的cert和CDN证书等
+
+### 案例配置文件
 ```
 global:
   certStoragePath: ./cert_storage  # 证书保存路径
@@ -19,7 +23,7 @@ providers:
   saveSSLName:         # 默认留空，指定SSL证书保存的名字，留空则默认使用domains[0].key的名称
   renewBeforeDay: 10  # 到期前10天重新颁发
   email: "your@mail.com" # 申请证书时设置的邮箱
-  hook: "" # 默认留空, 填写脚本路径后，颁发完证书会主动调用外部脚本
+  hook: "sh /opt/update.sh" # 默认留空, 填写脚本路径后，颁发完证书会主动调用外部脚本
   accessKey: "your access token"   # alidns有key和secret，dnspod只需要access token
   secretKey: "your secret key"
 
@@ -32,7 +36,7 @@ providers:
   saveSSLName:         # 默认留空，指定SSL证书保存的名字，留空则默认使用domains[0].key的名称
   renewBeforeDay: 10  # 到期前10天重新颁发
   email: "your@mail.com" # 申请证书时设置的邮箱
-  hook: "ifconfig" # 默认留空, 填写脚本路径后，颁发完证书会主动调用此处设置的外部脚本或命令
+  hook: "" # 默认留空, 填写脚本路径后，颁发完证书会主动调用此处设置的外部脚本或命令
   accessKey: "457y51,your token"  # 填写dnspod token, 格式APPID,TOKEN
   secretKey: ""  # dnspod没有secret，留空即可
 ```
