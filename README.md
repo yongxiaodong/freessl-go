@@ -6,8 +6,8 @@
 - 腾讯云DNSPOD
 
 ## 案例
-1、自动申请test.com和itgod.org的SSL通配符证书，保存在./cert_storage目录中，证书到期前10天重新申请证书覆盖即将过期证书
-2、test.com证书更新后，需要调用/opt/update.sh这个外部脚本执行一些外部的自定义逻辑，比如替换nginx的cert和CDN证书等
+- 1、自动申请test.com和itgod.org的SSL通配符证书，保存在./cert_storage目录中，证书到期前10天重新申请证书覆盖即将过期证书
+- 2、test.com证书更新后，需要调用/opt/update.sh这个外部脚本执行一些外部的自定义逻辑，比如替换nginx的cert和CDN证书等
 
 ### 案例配置文件
 ```
