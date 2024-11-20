@@ -1,8 +1,8 @@
 windowsbuild:
 	$env:GOOS="windows"
-	go build main.go
+	go build  -o freessl.go main.go
 linuxbuild:
 	$env:GOOS="linux"
-	go  build  main.go
+	go build  -o freessl_amd64.go main.go
 build:
-	go build main.go -o free_ssl.go
+	go build  -o freessl.go main.go
