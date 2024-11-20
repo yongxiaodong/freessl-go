@@ -9,7 +9,7 @@ import (
 	"freessl-go/pkg/parse_config"
 	"github.com/go-acme/lego/v4/challenge"
 	"github.com/go-acme/lego/v4/providers/dns/alidns"
-	"github.com/go-acme/lego/v4/providers/dns/dnspod"
+	"github.com/go-acme/lego/v4/providers/dns/tencentcloud"
 	"log"
 	"os"
 	"os/exec"
@@ -34,9 +34,18 @@ var (
 			}
 			return provider, nil
 		},
-		"dnsPod": func(cfg parse_config.Provider) (challenge.Provider, error) {
-			_ = os.Setenv("DNSPOD_API_KEY", cfg.AccessKey)
-			provider, err := dnspod.NewDNSProvider()
+		//"dnsPod": func(cfg parse_config.Provider) (challenge.Provider, error) {
+		//	_ = os.Setenv("DNSPOD_API_KEY", cfg.AccessKey)
+		//	provider, err := dnspod.NewDNSProvider()
+		//	if err != nil {
+		//		return nil, err
+		//	}
+		//	return provider, nil
+		//},
+		"tencentCloud": func(cfg parse_config.Provider) (challenge.Provider, error) {
+			_ = os.Setenv("TENCENTCLOUD_SECRET_ID", cfg.AccessKey)
+			_ = os.Setenv("TENCENTCLOUD_SECRET_Key", cfg.SecretKey)
+			provider, err := tencentcloud.NewDNSProvider()
 			if err != nil {
 				return nil, err
 			}
