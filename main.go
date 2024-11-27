@@ -44,7 +44,7 @@ var (
 		//},
 		"tencentCloud": func(cfg parse_config.Provider) (challenge.Provider, error) {
 			_ = os.Setenv("TENCENTCLOUD_SECRET_ID", cfg.AccessKey)
-			_ = os.Setenv("TENCENTCLOUD_SECRET_Key", cfg.SecretKey)
+			_ = os.Setenv("TENCENTCLOUD_SECRET_KEY", cfg.SecretKey)
 			provider, err := tencentcloud.NewDNSProvider()
 			if err != nil {
 				return nil, err
