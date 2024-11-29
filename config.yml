@@ -13,7 +13,7 @@ providers:
     accessKey: "xxx"   # alidns有key 或 腾讯云的secret_id
     secretKey: "xxx"   # alidns的secret 或 腾讯云的secre_key
 
-  # 以下是第二个需要托管的域名配置
+  # 以下是第二个需要托管的域名配置, 可以删除和添加
   - providerName: tencentCloud   # DNS提供商名称，支持aliDNS|tencentCloud
     enable: false
     domains:
